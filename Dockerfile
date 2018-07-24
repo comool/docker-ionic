@@ -14,7 +14,7 @@ ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linu
 ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 
 RUN mkdir android
-RUN apk --update add wget maven apache-ant gradle bash openjdk8 nodejs nodejs-npm git && \
+RUN apk --update add wget maven apache-ant gradle bash openjdk8 nodejs npm git && \
     wget -q -O android/tools.zip ${ANDROID_SDK_URL} && \
     apk del wget && \
     rm -rf /var/cache/apk/* && \
