@@ -18,7 +18,7 @@ RUN apk --update add wget maven apache-ant gradle bash openjdk8 nodejs nodejs-np
     wget -q -O android/tools.zip ${ANDROID_SDK_URL} && \
     apk del wget && \
     rm -rf /var/cache/apk/* && \
-    unzip -q android/tools.zip -d android/ && rm tools.zip
+    unzip -q android/tools.zip -d android/ && rm android/tools.zip
 RUN echo y | android/tools/android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
