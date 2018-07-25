@@ -9,16 +9,20 @@ ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linu
     MAVEN_HOME="/usr/share/maven" \
     GRADLE_HOME="/usr/share/gradle" \
     ANDROID_HOME="/opt/android" \
-    JAVA_HOME="/usr/bin/java"
+    JAVA_HOME="/usr/bin/java" \
+    NODEJS_VERSION=10.7.0
 
-ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
+ENV PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin:/opt/node/bin
 
 RUN mkdir android
-RUN apk --update add wget maven apache-ant gradle bash openjdk8 nodejs npm git && \
+RUN apk --update add curl wget maven apache-ant gradle bash openjdk8 git && \
     wget -q -O android/tools.zip ${ANDROID_SDK_URL} && \
     apk del wget && \
     rm -rf /var/cache/apk/* && \
     unzip -q android/tools.zip -d android/ && rm android/tools.zip
+RUN mkdir node && \
+    cd node && \
+    curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1
 RUN echo y | android/tools/android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
