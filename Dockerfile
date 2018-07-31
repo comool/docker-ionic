@@ -23,4 +23,4 @@ RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
-RUN npm i -g --unsafe-perm cordova@8.0.0 ionic@4.0.0
+RUN npm i -g --unsafe-perm cordova@8.0.0 ionic@4.0.2
