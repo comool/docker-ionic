@@ -18,7 +18,8 @@ RUN apk --update add curl wget maven apache-ant gradle bash openjdk8 git && \
     apk del wget && \
     rm -rf /var/cache/apk/* && \
     unzip -q android/tools.zip -d android/ && rm android/tools.zip
-RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin
+RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin && \
+    rm -rf /var/cache/apk/*
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
