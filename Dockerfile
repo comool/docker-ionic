@@ -26,4 +26,4 @@ RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-to
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
 RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION} ionic@${IONIC_VERSION} && \
-    npm cache clean
+    npm cache clean --force
