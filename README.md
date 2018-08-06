@@ -1,3 +1,6 @@
+![Docker Automated](https://img.shields.io/docker/automated/smlabt/ionic.svg)
+![Docker Build](https://img.shields.io/docker/build/smlabt/ionic.svg)
+
 # Docker Ionic
 Docker Image for building Ionic Apps with Android SDK. (e.g. with GitlabCI)
 ## Versions
