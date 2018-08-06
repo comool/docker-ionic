@@ -5,6 +5,8 @@ WORKDIR /opt
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linux.zip" \
     ANDROID_BUILD_TOOLS_VERSION=27.0.0 \
     ANDROID_APIS="android-27" \
+    IONIC_VERSION=4.0.2 \
+    CORDOVA_VERSION=8.0.0 \
     ANT_HOME="/usr/share/ant" \
     MAVEN_HOME="/usr/share/maven" \
     GRADLE_HOME="/usr/share/gradle" \
@@ -23,4 +25,4 @@ RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
-RUN npm i -g --unsafe-perm cordova@8.0.0 ionic@4.0.2
+RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION} ionic@${IONIC_VERSION}
