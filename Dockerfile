@@ -15,13 +15,11 @@ ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linu
 ENV PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin:${PATH}"
 
 RUN mkdir android
-RUN apk --update add curl wget maven apache-ant gradle bash openjdk8 git && \
+RUN apk --no-cache --update add curl wget maven apache-ant gradle bash openjdk8 git && \
     wget -q -O android/tools.zip ${ANDROID_SDK_URL} && \
-    apk del wget && \
-    rm -rf /var/cache/apk/* && \
-    unzip -q android/tools.zip -d android/ && rm android/tools.zip
-RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin && \
-    rm -rf /var/cache/apk/*
+    unzip -q android/tools.zip -d android/ && \
+    rm android/tools.zip
+RUN apk --no-cache --allow-untrusted -X https://apkproxy.herokuapp.com/sgerrand/alpine-pkg-glibc add glibc glibc-bin
 RUN echo y | android update sdk -a -u -t platform-tools,${ANDROID_APIS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 RUN chmod a+x -R $ANDROID_HOME
 RUN chown -R root:root $ANDROID_HOME
