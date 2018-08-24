@@ -5,7 +5,7 @@ WORKDIR /opt
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/tools_r25.2.5-linux.zip" \
     ANDROID_BUILD_TOOLS_VERSION=27.0.0 \
     ANDROID_APIS="android-27" \
-    IONIC_VERSION=4.0.6 \
+    IONIC_VERSION=4.1.1 \
     CORDOVA_VERSION=8.0.0 \
     ANT_HOME="/usr/share/ant" \
     MAVEN_HOME="/usr/share/maven" \
