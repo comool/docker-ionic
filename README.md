@@ -10,7 +10,7 @@ Docker Image for building Ionic Apps with Android SDK. (e.g. with GitlabCI)
 - Android Build Tools 27.0.0
 - Android APIs 27
 - Cordova 8.0.0
-- Ionic 4.0.6
+- Ionic 4.1.1
 ## Image
 You can find the Docker Image on Docker Hub: [smlabt/ionic](https://hub.docker.com/r/smlabt/ionic/)
 ```
